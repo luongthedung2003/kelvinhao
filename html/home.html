@@ -1,0 +1,1574 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Adventure - Travel Far, Find Yourself</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        overflow-x: hidden;
+        background: #f0f0f0;
+      }
+
+      /* Main Container */
+      .adventure-container {
+        /* max-width: 1400px; */
+        margin: 0px auto;
+        background: white;
+        box-shadow: 0 20px 80px rgba(0, 0, 0, 0.3);
+        border-radius: 20px;
+        overflow: hidden;
+      }
+
+      /* Hero Section */
+      .hero-section {
+        position: relative;
+        height: 100vh;
+        background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+          url("https://housedesign.vn/wp-content/uploads/2019/12/phong-cach-noi-that-minimalist.jpg");
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        transition: background 0.6s ease;
+      }
+      .navbar.scrolled {
+        backdrop-filter: blur(30px);
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      /* Navbar */
+      .navbar {
+        top: 0;
+        left: 0;
+        right: 0;
+        background: #ffffff;
+        /* backdrop-filter: blur(5px); */
+        padding: 15px 60px;
+        z-index: 100;
+        transition: all 0.3s ease;
+      }
+
+      .navbar-brand {
+        color: white !important;
+        font-size: 1.8rem;
+        font-weight: 800;
+        letter-spacing: 2px;
+      }
+
+      .nav-link {
+        color: black !important;
+        font-weight: 500;
+        margin: 0 20px;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      .nav-link:hover {
+        color: #4caf50 !important;
+      }
+
+      .navbar-icons {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+      }
+
+      .navbar-icons i {
+        color: black;
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .navbar-icons i:hover {
+        color: #4caf50;
+        transform: scale(1.2);
+      }
+
+      /* Hero Content */
+      .hero-content {
+        color: white;
+        padding: 0 60px;
+        max-width: 700px;
+      }
+
+      .hero-subtitle {
+        font-size: 1rem;
+        margin-bottom: 20px;
+        letter-spacing: 2px;
+        opacity: 0.9;
+      }
+
+      .hero-title {
+        font-size: 2.5rem;
+        font-weight: 900;
+        line-height: 1.1;
+        margin-bottom: 30px;
+        text-transform: uppercase;
+      }
+
+      .hero-description {
+        font-size: 1rem;
+        line-height: 1.8;
+        margin-bottom: 40px;
+        opacity: 0.9;
+      }
+
+      .cta-buttons {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+      }
+
+      .play-btn {
+        width: 60px;
+        height: 60px;
+        background: #ffd700;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4);
+      }
+
+      .play-btn:hover {
+        transform: scale(1.1);
+        box-shadow: 0 8px 30px rgba(255, 215, 0, 0.6);
+      }
+
+      .play-btn i {
+        color: #333;
+        font-size: 1.5rem;
+        margin-left: 3px;
+      }
+
+      .start-btn {
+        background: transparent;
+        border: 2px solid white;
+        color: white;
+        padding: 15px 40px;
+        border-radius: 50px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .start-btn:hover {
+        background: white;
+        color: #333;
+        transform: translateY(-2px);
+      }
+
+      /* Gallery Section */
+      .gallery-section {
+        position: absolute;
+        bottom: 40px;
+        right: 60px;
+        display: flex;
+        gap: 20px;
+        align-items: center;
+      }
+
+      .gallery-cards {
+        display: flex;
+        gap: 20px;
+      }
+
+      .gallery-card {
+        width: 120px;
+        height: 200px;
+        border-radius: 20px;
+        overflow: hidden;
+        cursor: pointer;
+        transition: all 0.4s ease;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        position: relative;
+      }
+
+      .gallery-card:hover {
+        transform: translateY(-10px) scale(1.05);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+      }
+
+      .gallery-card.active {
+        border: 3px solid #ffd700;
+        box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+      }
+
+      .gallery-card.active::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(255, 215, 0, 0.2);
+      }
+
+      .gallery-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* Navigation Controls */
+      .nav-controls {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+      }
+
+      .nav-arrow {
+        width: 50px;
+        height: 50px;
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .nav-arrow:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: scale(1.1);
+      }
+
+      .nav-arrow i {
+        color: white;
+        font-size: 1.2rem;
+      }
+
+      .progress-bar-custom {
+        width: 200px;
+        height: 2px;
+        background: rgba(255, 255, 255, 0.3);
+        position: relative;
+        margin: 0 15px;
+      }
+
+      .progress-fill {
+        height: 100%;
+        background: white;
+        width: 33%;
+        transition: width 0.3s ease;
+      }
+
+      .slide-number {
+        color: white;
+        font-size: 3rem;
+        font-weight: 800;
+      }
+
+      /* Responsive */
+      @media (max-width: 1200px) {
+        .gallery-section {
+          display: none;
+        }
+      }
+
+      @media (max-width: 992px) {
+        .navbar {
+          padding: 20px 30px;
+        }
+
+        .hero-content {
+          padding: 0 30px;
+        }
+
+        .hero-title {
+          font-size: 3rem;
+        }
+
+        .nav-link {
+          margin: 0 10px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .adventure-container {
+          margin: 0;
+          border-radius: 0;
+        }
+
+        .navbar {
+          padding: 15px 20px;
+        }
+
+        .navbar-brand {
+          font-size: 1.3rem;
+        }
+
+        .hero-content {
+          padding: 0 20px;
+        }
+
+        .hero-title {
+          font-size: 2.5rem;
+        }
+
+        .hero-description {
+          font-size: 0.9rem;
+        }
+
+        .cta-buttons {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .start-btn {
+          padding: 12px 30px;
+        }
+
+        .play-btn {
+          width: 50px;
+          height: 50px;
+        }
+
+        .nav-controls {
+          position: absolute;
+          bottom: 20px;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+
+        .progress-bar-custom {
+          width: 100px;
+        }
+
+        .slide-number {
+          font-size: 2rem;
+        }
+      }
+
+      /* Animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .hero-content > * {
+        animation: fadeInUp 1s ease-out backwards;
+      }
+
+      .hero-subtitle {
+        animation-delay: 0.2s;
+      }
+
+      .hero-title {
+        animation-delay: 0.4s;
+      }
+
+      .hero-description {
+        animation-delay: 0.6s;
+      }
+
+      .cta-buttons {
+        animation-delay: 0.8s;
+      }
+
+      /* Navbar Toggle */
+      .navbar-toggler {
+        border: none;
+        background: rgba(255, 255, 255, 0.2);
+        padding: 10px;
+        border-radius: 5px;
+      }
+
+      .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+      }
+
+      /* Provinces Section */
+      .provinces-section {
+        background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%);
+      }
+
+      .section-title {
+        font-size: 2rem;
+        font-weight: 800;
+        color: #333;
+      }
+
+      .section-subtitle {
+        color: #666;
+        font-size: 0.95rem;
+      }
+
+      .search-box {
+        background: white;
+        border-radius: 50px;
+        padding: 15px 25px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        max-width: 100%;
+      }
+
+      .search-box input {
+        border: none;
+        outline: none;
+        flex: 1;
+        font-size: 1rem;
+      }
+
+      .search-box i {
+        color: #999;
+      }
+
+      .provinces-scroll {
+        display: flex;
+        gap: 20px;
+        overflow-x: auto;
+        padding: 20px 0;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .provinces-scroll::-webkit-scrollbar {
+        height: 8px;
+      }
+
+      .provinces-scroll::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 10px;
+      }
+
+      .provinces-scroll::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 10px;
+      }
+
+      .province-card {
+        min-width: 280px;
+        background: white;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .province-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+      }
+
+      .province-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .province-info {
+        padding: 20px;
+      }
+
+      .province-info h3 {
+        font-size: 1.3rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+        color: #333;
+      }
+
+      .province-info p {
+        font-size: 0.9rem;
+        color: #666;
+        line-height: 1.6;
+      }
+
+      .scroll-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 20px;
+      }
+
+      .scroll-btn {
+        width: 50px;
+        height: 50px;
+        background: white;
+        border: none;
+        border-radius: 50%;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .scroll-btn:hover {
+        background: #4caf50;
+        color: white;
+        transform: scale(1.1);
+      }
+
+      /* Responsive for new sections */
+      @media (max-width: 992px) {
+        .gallery-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .gallery-item.wide {
+          grid-column: span 1;
+        }
+
+        .articles-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .section-header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 15px;
+        }
+
+        .search-box {
+          max-width: 100%;
+        }
+
+        .province-card {
+          min-width: 250px;
+        }
+
+        .gallery-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .gallery-item.tall {
+          grid-row: span 1;
+        }
+
+        .section-title {
+          font-size: 1.5rem;
+        }
+      }
+
+      /* Projects Section */
+      .projects-section {
+        background-color: var(--primary-beige);
+      }
+
+      .project-gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .project-item {
+        position: relative;
+        border-radius: 15px;
+        overflow: hidden;
+        aspect-ratio: 4/3;
+        cursor: pointer;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .project-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .project-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          to top,
+          rgba(44, 44, 44, 0.8) 0%,
+          transparent 100%
+        );
+        display: flex;
+        align-items: flex-end;
+        padding: 1.5rem;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .project-item:hover .project-overlay {
+        opacity: 1;
+      }
+
+      .project-item:hover img {
+        transform: scale(1.15);
+      }
+
+      .project-overlay h4 {
+        color: white;
+        font-size: 1.25rem;
+        margin: 0;
+      }
+
+      /* About Section */
+      .about-section {
+        background: white;
+      }
+
+      .about-image-wrapper {
+        position: relative;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+      }
+
+      .about-main-img {
+        width: 100%;
+        height: 500px;
+        object-fit: cover;
+      }
+
+      .about-label {
+        color: #999;
+        font-size: 0.95rem;
+        margin-bottom: 10px;
+        font-weight: 600;
+      }
+
+      .about-title {
+        font-size: 2.5rem;
+        font-weight: 800;
+        margin-bottom: 20px;
+        color: #333;
+        line-height: 1.2;
+      }
+
+      .about-description {
+        font-size: 1rem;
+        color: #666;
+        line-height: 1.8;
+        margin-bottom: 30px;
+      }
+
+      .service-tabs {
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+      }
+
+      .service-tab {
+        padding: 10px 25px;
+        border: 2px solid #e0e0e0;
+        background: white;
+        border-radius: 25px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        color: #666;
+      }
+
+      .service-tab.active {
+        background: #333;
+        color: white;
+        border-color: #333;
+      }
+
+      .service-tab:hover {
+        border-color: #333;
+        color: #333;
+      }
+
+      .service-description {
+        color: #666;
+        line-height: 1.8;
+      }
+
+      .checklist {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .check-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: #333;
+      }
+
+      .check-item i {
+        color: #4caf50;
+        font-size: 1.2rem;
+      }
+
+      .about-gallery {
+        display: flex;
+        gap: 20px;
+      }
+
+      .about-gallery img {
+        width: 48%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .about-gallery img:hover {
+        transform: scale(1.05);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Featured Services Section */
+      .featured-services-section {
+        background: linear-gradient(135deg, #f5f5f5 0%, #e8eaf6 100%);
+      }
+
+      .services-label {
+        color: #999;
+        font-size: 0.95rem;
+        margin-bottom: 10px;
+        font-weight: 600;
+      }
+
+      .services-title {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: #333;
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 25px;
+        margin-bottom: 40px;
+      }
+
+      .service-card {
+        background: white;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: all 0.4s ease;
+        cursor: pointer;
+      }
+
+      .service-card:hover {
+        transform: translateY(-15px);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+      }
+
+      .service-image {
+        width: 100%;
+        height: 250px;
+        overflow: hidden;
+      }
+
+      .service-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: all 0.5s ease;
+      }
+
+      .service-card:hover .service-image img {
+        transform: scale(1.1);
+      }
+
+      .service-info {
+        padding: 25px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .service-icon {
+        width: 50px;
+        height: 50px;
+        background: #f5f5f5;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      .service-icon i {
+        font-size: 1.5rem;
+        color: #333;
+      }
+
+      .service-info h3 {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #333;
+        margin: 0;
+      }
+
+      .services-navigation {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+      }
+
+      .services-arrow {
+        width: 50px;
+        height: 50px;
+        background: white;
+        border: none;
+        border-radius: 50%;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .services-arrow:hover {
+        background: #333;
+        transform: scale(1.1);
+      }
+
+      .services-arrow:hover i {
+        color: white;
+      }
+
+      .services-arrow i {
+        color: #333;
+      }
+
+      /* Responsive for About & Services */
+      @media (max-width: 992px) {
+        .services-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .about-title {
+          font-size: 2rem;
+        }
+
+        .services-title {
+          font-size: 2rem;
+        }
+
+        .about-main-img {
+          height: 400px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .services-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .about-gallery {
+          flex-direction: column;
+        }
+
+        .about-gallery img {
+          width: 100%;
+        }
+
+        .service-tabs {
+          gap: 10px;
+        }
+
+        .service-tab {
+          padding: 8px 20px;
+          font-size: 0.9rem;
+        }
+      }
+
+      footer {
+        background-color: #e9e9e9;
+        color: #000;
+        padding: 60px 0 30px;
+        font-family: "Poppins", sans-serif;
+      }
+
+      footer h5 {
+        font-weight: 600;
+        margin-bottom: 20px;
+      }
+
+      footer a {
+        color: #000;
+        text-decoration: none;
+        display: block;
+        margin-bottom: 8px;
+        transition: all 0.2s ease;
+      }
+
+      footer a:hover {
+        color: #555;
+        text-decoration: underline;
+      }
+
+      .subscribe-box input {
+        border: none;
+        border-bottom: 1px solid #000;
+        background: transparent;
+        width: 100%;
+        padding: 6px 0;
+        outline: none;
+        font-size: 0.95rem;
+      }
+
+      .subscribe-box button {
+        margin-top: 10px;
+        background: #000;
+        color: #fff;
+        border: none;
+        padding: 8px 20px;
+        border-radius: 4px;
+        transition: background 0.3s ease;
+      }
+
+      .subscribe-box button:hover {
+        background: #444;
+      }
+
+      .social-icons a {
+        display: inline-block;
+        width: 36px;
+        height: 36px;
+        background: #000;
+        color: #fff;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 36px;
+        margin-right: 8px;
+        transition: all 0.3s ease;
+      }
+
+      .social-icons a:hover {
+        background: #555;
+      }
+
+      .footer-bottom {
+        border-top: 1px solid #aaa;
+        padding-top: 15px;
+        margin-top: 30px;
+        font-size: 0.9rem;
+        color: #555;
+      }
+
+      @media (max-width: 768px) {
+        footer {
+          text-align: center;
+        }
+        .social-icons a {
+          margin: 6px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="adventure-container">
+      <!-- Hero Section -->
+      <section class="hero-section">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg fixed-top">
+          <div class="container-fluid">
+            <img src="/image/image.png" alt="" style="width: 120px" />
+            <!-- <a class="navbar-brand" href="#">Home...</a> -->
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarNav"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav mx-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="#home">Trang chủ</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/html/products.html">Sản phẩm</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#about">Dịch vụ</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#destinations">Tin tức</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/html/contact.html">Liên hệ</a>
+                </li>
+              </ul>
+              <div class="navbar-icons d-none d-lg-flex">
+                <i class="fas fa-search"></i>
+                <i class="fas fa-user"></i>
+              </div>
+            </div>
+          </div>
+        </nav>
+
+        <!-- Hero Content -->
+        <div class="hero-content">
+          <div class="hero-subtitle">
+            Kiến tạo không gian sống tinh tế, nơi mỗi chi tiết nội thất đều kể
+            một câu chuyện
+          </div>
+          <h1 class="hero-title">
+            Tạo dựng không gian,<br />
+            nuôi dưỡng cảm hứng
+          </h1>
+          <p class="hero-description">
+            Mang đến giải pháp nội thất thông minh, biến ngôi nhà thành tổ ấm
+            đầy cảm hứng, Biến ý tưởng thành hiện thực, mang đến không gian sống
+            vừa tiện nghi vừa thẩm mỹ
+          </p>
+          <div class="cta-buttons">
+            <div class="play-btn">
+              <i class="fas fa-play"></i>
+            </div>
+            <button class="start-btn">KHÁM PHÁ NGAY</button>
+          </div>
+        </div>
+
+        <!-- Gallery Section -->
+        <div class="gallery-section">
+          <div class="gallery-cards">
+            <div
+              class="gallery-card active"
+              data-bg="https://housedesign.vn/wp-content/uploads/2019/12/image15-3.jpg"
+            >
+              <img
+                src="https://housedesign.vn/wp-content/uploads/2019/12/image15-3.jpg"
+                alt="Wildlife"
+              />
+            </div>
+            <div
+              class="gallery-card"
+              data-bg="https://kientruccenhome.vn/wp-content/uploads/2024/08/10-1-1024x683.jpg"
+            >
+              <img
+                src="https://kientruccenhome.vn/wp-content/uploads/2024/08/10-1-1024x683.jpg"
+                alt="Desert"
+              />
+            </div>
+            <div
+              class="gallery-card"
+              data-bg="https://housedesign.vn/wp-content/uploads/2019/12/phong-cach-noi-that-minimalist.jpg"
+            >
+              <img
+                src="https://housedesign.vn/wp-content/uploads/2019/12/phong-cach-noi-that-minimalist.jpg"
+                alt="Mountains"
+              />
+            </div>
+          </div>
+          <div class="nav-controls">
+            <div class="nav-arrow">
+              <i class="fas fa-chevron-left"></i>
+            </div>
+            <div class="nav-arrow">
+              <i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="progress-bar-custom">
+              <div class="progress-fill"></div>
+            </div>
+            <div class="slide-number">01</div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- About Us Section -->
+    <section class="about-section py-5" id="about">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-6">
+            <div class="about-image-wrapper">
+              <img
+                src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&h=600&fit=crop"
+                alt="Interior Design"
+                class="about-main-img"
+              />
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="about-content">
+              <p class="about-label">Về chúng tôi</p>
+              <h2 class="about-title">
+                Cung cấp các dịch vụ tốt nhất cho bạn.
+              </h2>
+              <p class="about-description">
+                Chúng tôi kết hợp giữa thẩm mỹ và công năng, sử dụng vật liệu
+                chất lượng cao cùng đội ngũ thiết kế chuyên nghiệp để tạo ra
+                những sản phẩm phù hợp với phong cách sống và ngân sách của bạn.
+              </p>
+
+              <div class="service-tabs mb-4">
+                <button class="service-tab active">Thiết kế</button>
+                <button class="service-tab">Tạo sản phẩm</button>
+                <button class="service-tab">Lắp đặt</button>
+              </div>
+
+              <p class="service-description mb-4">
+                Từ ý tưởng ban đầu đến khi bàn giao, chúng tôi luôn đồng hành để
+                biến ngôi nhà của bạn thành không gian mơ ước.
+              </p>
+
+              <div class="checklist mb-4">
+                <div class="check-item">
+                  <i class="fas fa-check-circle"></i>
+                  <span>Tư vấn và lên ý tưởng theo phong cách cá nhân</span>
+                </div>
+                <div class="check-item">
+                  <i class="fas fa-check-circle"></i>
+                  <span>Thi công nội thất trọn gói</span>
+                </div>
+                <div class="check-item">
+                  <i class="fas fa-check-circle"></i>
+                  <span>Trang trí & cải tạo không gian</span>
+                </div>
+              </div>
+
+              <div class="about-gallery">
+                <img
+                  src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop"
+                  alt="Gallery 1"
+                />
+                <img
+                  src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=400&h=300&fit=crop"
+                  alt="Gallery 2"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Services Section -->
+    <section class="featured-services-section py-5">
+      <div class="container">
+        <div class="text-center mb-5">
+          <p class="services-label">Services We Do</p>
+          <h2 class="services-title">Dịch vụ nổi bật</h2>
+        </div>
+
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-image">
+              <img
+                src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&h=400&fit=crop"
+                alt="Architecture"
+              />
+            </div>
+            <div class="service-info">
+              <div class="service-icon">
+                <i class="fas fa-building"></i>
+              </div>
+              <h3>Thiết kế nội thất chuyên nghiệp</h3>
+            </div>
+          </div>
+
+          <div class="service-card">
+            <div class="service-image">
+              <img
+                src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=600&h=400&fit=crop"
+                alt="Interior Design"
+              />
+            </div>
+            <div class="service-info">
+              <div class="service-icon">
+                <i class="fas fa-couch"></i>
+              </div>
+              <h3>Sản xuất đồ nội thất theo yêu cầu</h3>
+            </div>
+          </div>
+
+          <div class="service-card">
+            <div class="service-image">
+              <img
+                src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=600&h=400&fit=crop"
+                alt="Furniture"
+              />
+            </div>
+            <div class="service-info">
+              <div class="service-icon">
+                <i class="fas fa-chair"></i>
+              </div>
+              <h3>Trang trí & cải tạo không gian</h3>
+            </div>
+          </div>
+
+          <div class="service-card">
+            <div class="service-image">
+              <img
+                src="https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=600&h=400&fit=crop"
+                alt="Architecture Planning"
+              />
+            </div>
+            <div class="service-info">
+              <div class="service-icon">
+                <i class="fas fa-drafting-compass"></i>
+              </div>
+              <h3>Tư vấn phong thủy nội thất</h3>
+            </div>
+          </div>
+        </div>
+
+        <div class="services-navigation">
+          <button class="services-arrow left">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="services-arrow right">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section projects-section">
+      <div class="container">
+        <div class="section-title">
+          <h2>Dự Án Của Chúng Tôi</h2>
+          <p>Những không gian sống đẹp mà chúng tôi đã tạo ra</p>
+        </div>
+        <div class="project-gallery">
+          <div class="project-item">
+            <img
+              src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+              alt="Dự án 1"
+            />
+            <div class="project-overlay">
+              <h4>Phòng Khách Hiện Đại</h4>
+            </div>
+          </div>
+          <div class="project-item">
+            <img
+              src="https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+              alt="Dự án 2"
+            />
+            <div class="project-overlay">
+              <h4>Phòng Ngủ Sang Trọng</h4>
+            </div>
+          </div>
+          <div class="project-item">
+            <img
+              src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+              alt="Dự án 3"
+            />
+            <div class="project-overlay">
+              <h4>Phòng Bếp Tối Giản</h4>
+            </div>
+          </div>
+          <div class="project-item">
+            <img
+              src="https://images.unsplash.com/photo-1554995207-c18c203602cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+              alt="Dự án 4"
+            />
+            <div class="project-overlay">
+              <h4>Không Gian Làm Việc</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Provinces Section -->
+    <section class="provinces-section py-5" id="destinations">
+      <div class="container">
+        <h2 class="section-title mb-2">Provinsi di INDONESIA</h2>
+        <div class="search-box mb-4">
+          <i class="fas fa-search"></i>
+          <input type="text" placeholder="Cari Provinsi" />
+          <i class="fas fa-home"></i>
+        </div>
+
+        <div class="provinces-scroll">
+          <div class="province-card">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtB9NSfebKVUEBr8oi2W7q0jLsDHEJ5kFZArRj7R46gBFcL9vlC5x6gimo91OsE_rh9_E&usqp=CAU"
+              alt="Yogyakarta"
+            />
+            <div class="province-info">
+              <h3>DI Yogyakarta</h3>
+              <p>
+                Daerah istimewa Yogyakarta adalah kota di Indonesia yang
+                terkenal dengan...
+              </p>
+            </div>
+          </div>
+
+          <div class="province-card">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtB9NSfebKVUEBr8oi2W7q0jLsDHEJ5kFZArRj7R46gBFcL9vlC5x6gimo91OsE_rh9_E&usqp=CAU"
+              alt="Jakarta"
+            />
+            <div class="province-info">
+              <h3>DKI Jakarta</h3>
+              <p>
+                Jakarta adalah ibukota negara dan kota terbesar di Indonesia
+                yang terkenal...
+              </p>
+            </div>
+          </div>
+
+          <div class="province-card">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtB9NSfebKVUEBr8oi2W7q0jLsDHEJ5kFZArRj7R46gBFcL9vlC5x6gimo91OsE_rh9_E&usqp=CAU"
+              alt="Jawa Timur"
+            />
+            <div class="province-info">
+              <h3>Jawa Timur</h3>
+              <p>
+                Jawa Timur adalah sebuah provinsi yang terletak di bagian timur
+                Pulau Jawa...
+              </p>
+            </div>
+          </div>
+
+          <div class="province-card">
+            <img
+              src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=400&h=300&fit=crop"
+              alt="Bali"
+            />
+            <div class="province-info">
+              <h3>Bali</h3>
+              <p>
+                Bali adalah sebuah wilayah provinsi yang terletak di Indonesia
+                dan terkenal...
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="scroll-buttons">
+          <button class="scroll-btn left">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="scroll-btn right">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div class="row gy-4">
+          <!-- Logo & Subscribe -->
+          <div class="col-lg-3 col-md-6">
+            <img
+              src="/image/logo.png"
+              alt=""
+              style="width: 120px; object-fit: cover"
+            />
+            <!-- <h5>Your Logo</h5> -->
+            <p class="text-muted">Thiết kế không gian sống</p>
+            <h6 class="mt-3 mb-2">Subscribe Now</h6>
+            <div class="subscribe-box">
+              <form>
+                <input type="email" placeholder="Enter your Email" required />
+                <button type="submit">Subscribe</button>
+              </form>
+            </div>
+          </div>
+
+          <!-- Information -->
+          <div class="col-lg-2 col-md-6">
+            <h5>Information</h5>
+            <a href="#">Về chúng tôi</a>
+            <a href="#">Dịch vụ</a>
+            <a href="#">Sản phẩm</a>
+            <a href="#">Bài viết</a>
+            <a href="#">Sự kiện</a>
+          </div>
+
+          <!-- Helpful Links -->
+          <div class="col-lg-2 col-md-6">
+            <h5>Helpful Links</h5>
+            <a href="#">Dịch vụ</a>
+            <a href="#">Hỗ trợ</a>
+            <a href="#">Term</a>
+            <a href="#">Privacy Policy</a>
+          </div>
+
+          <!-- Our Services -->
+          <div class="col-lg-2 col-md-6">
+            <h5>Our Services</h5>
+            <a href="#">Thiết kế</a>
+            <a href="#">Tư vấn </a>
+            <a href="#">Lắp đặt</a>
+            <a href="#">Cải tạo</a>
+          </div>
+
+          <!-- Contact -->
+          <div class="col-lg-3 col-md-6">
+            <h5>Contact Us</h5>
+            <p><i class="bi bi-telephone"></i> +91 9999 999 999</p>
+            <p><i class="bi bi-envelope"></i> luongthehao@gmail.com</p>
+            <div class="social-icons mt-3">
+              <a href="#"><i class="bi bi-facebook"></i></a>
+              <a href="#"><i class="bi bi-twitter"></i></a>
+              <a href="#"><i class="bi bi-instagram"></i></a>
+              <a href="#"><i class="bi bi-google"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="footer-bottom d-flex flex-column flex-md-row justify-content-between align-items-center mt-4"
+        >
+          <p class="mb-2 mb-md-0">© 2025 Company Ltd. All rights reserved</p>
+          <div>
+            <a href="#" class="me-3">FAQ</a>
+            <a href="#" class="me-3">Privacy</a>
+            <a href="#">Terms & Condition</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Navbar scroll effect
+      window.addEventListener("scroll", function () {
+        const navbar = document.querySelector(".navbar");
+        if (window.scrollY > 50) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
+        }
+      });
+      // Gallery cards click to change background
+      const heroSection = document.querySelector(".hero-section");
+      const galleryCards = document.querySelectorAll(".gallery-card");
+
+      galleryCards.forEach((card, index) => {
+        card.addEventListener("click", () => {
+          // Get background URL from data attribute
+          const bgUrl = card.getAttribute("data-bg");
+
+          // Update background
+          heroSection.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('${bgUrl}')`;
+
+          // Update active state
+          galleryCards.forEach((c) => c.classList.remove("active"));
+          card.classList.add("active");
+
+          // Update slide number
+          currentSlide = index + 1;
+          updateSlide();
+        });
+      });
+
+      // Smooth scrolling
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({ behavior: "smooth" });
+          }
+        });
+      });
+
+      // Gallery navigation
+      let currentSlide = 1;
+      const totalSlides = 3;
+      const progressFill = document.querySelector(".progress-fill");
+      const slideNumber = document.querySelector(".slide-number");
+
+      document.querySelectorAll(".nav-arrow").forEach((arrow, index) => {
+        arrow.addEventListener("click", () => {
+          if (index === 0) {
+            currentSlide = currentSlide > 1 ? currentSlide - 1 : totalSlides;
+          } else {
+            currentSlide = currentSlide < totalSlides ? currentSlide + 1 : 1;
+          }
+
+          // Trigger click on corresponding gallery card
+          galleryCards[currentSlide - 1].click();
+        });
+      });
+
+      function updateSlide() {
+        slideNumber.textContent = currentSlide.toString().padStart(2, "0");
+        progressFill.style.width = `${(currentSlide / totalSlides) * 100}%`;
+      }
+
+      // Play button animation
+      document.querySelector(".play-btn").addEventListener("click", () => {
+        alert("Video player would open here!");
+      });
+      // Provinces scroll functionality
+      const provincesScroll = document.querySelector(".provinces-scroll");
+      const scrollBtnLeft = document.querySelector(".scroll-btn.left");
+      const scrollBtnRight = document.querySelector(".scroll-btn.right");
+
+      if (scrollBtnLeft && scrollBtnRight) {
+        scrollBtnLeft.addEventListener("click", () => {
+          provincesScroll.scrollBy({ left: -300, behavior: "smooth" });
+        });
+
+        scrollBtnRight.addEventListener("click", () => {
+          provincesScroll.scrollBy({ left: 300, behavior: "smooth" });
+        });
+      }
+
+      // Service tabs functionality
+      const serviceTabs = document.querySelectorAll(".service-tab");
+      serviceTabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          serviceTabs.forEach((t) => t.classList.remove("active"));
+          tab.classList.add("active");
+        });
+      });
+
+      // Services navigation
+      const servicesGrid = document.querySelector(".services-grid");
+      const servicesArrowLeft = document.querySelector(".services-arrow.left");
+      const servicesArrowRight = document.querySelector(
+        ".services-arrow.right"
+      );
+
+      if (servicesArrowLeft && servicesArrowRight && servicesGrid) {
+        servicesArrowLeft.addEventListener("click", () => {
+          servicesGrid.scrollBy({ left: -300, behavior: "smooth" });
+        });
+
+        servicesArrowRight.addEventListener("click", () => {
+          servicesGrid.scrollBy({ left: 300, behavior: "smooth" });
+        });
+      }
+    </script>
+  </body>
+</html>
